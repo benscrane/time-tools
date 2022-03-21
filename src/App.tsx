@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { supabase } from './supabaseClient';
-import { Auth } from './components/Auth';
-import { Account } from './components/Account';
-import logo from './logo.svg';
-import './App.css';
+import { Navbar } from './components/Navbar';
+import { AuthenticatedRouter } from './components/AuthenticatedRouter';
+import { PublicRouter } from './components/PublicRouter';
 
-function App() {
+const App: React.FC = () => {
   const [session, setSession] = useState<any | null>(null);
 
   useEffect(() => {
@@ -13,16 +13,17 @@ function App() {
 
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
-    })
+    });
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <Navbar loggedIn={!!session}/>
+      <main className="container mx-auto">
+        {!session ? <PublicRouter /> : <AuthenticatedRouter session={session} />}
+      </main>
+    </Router>
+  )
+};
 
 export default App;
