@@ -1,7 +1,11 @@
 import React from 'react';
+import { Calendar } from './Calendar';
 
 export const Dashboard: React.FC = () => {
     return (
-        <div>Dashboard</div>
+        <div>
+            <h1>Dashboard</h1>
+            <Calendar />
+        </div>
     )
 };
