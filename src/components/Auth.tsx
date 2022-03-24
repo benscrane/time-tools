@@ -5,7 +5,7 @@ export const Auth: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
 
-    const handleLogin = async (e: any) => {
+    const handleLogin: JSX.IntrinsicElements['button']['onClick'] = async (e) => {
         e.preventDefault();
 
         try {

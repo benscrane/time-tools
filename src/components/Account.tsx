@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Session } from '@supabase/supabase-js';
 import { supabase } from '../supabaseClient';
 
 interface AccountProps {
-    session: any;
+    session: Session;
 }
 
 export const Account: React.FC<AccountProps> = ({ session }) => {
@@ -38,9 +39,7 @@ export const Account: React.FC<AccountProps> = ({ session }) => {
         }
     };
 
-    const updateProfile = async (e: any) => {
-        e.preventDefault();
-    
+    const updateProfile = async () => {    
         try {
           setLoading(true);
           const user = supabase.auth.user();
@@ -72,7 +71,7 @@ export const Account: React.FC<AccountProps> = ({ session }) => {
             ) : (
                 <div>
                 <div>
-                    Email: { session.user.email }
+                    Email: { session.user?.email }
                 </div>
                 <div>
                     <label htmlFor='username'>Username</label>
