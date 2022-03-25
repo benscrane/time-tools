@@ -33,6 +33,8 @@ export const Calendar: React.FC = () => {
                 startAccessor="start"
                 endAccessor="end"
                 views={['week']}
+                defaultView='week'
+                toolbar={false}
                 />
         </div>
     );

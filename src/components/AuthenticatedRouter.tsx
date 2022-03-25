@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Dashboard } from './Dashboard';
-import { Account } from './Account';
+import { Dashboard } from '../screens/Dashboard';
+import { Account } from '../screens/Account';
 
 interface AuthenticatedRouterProps {
     session: any;

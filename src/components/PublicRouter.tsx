@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Landing } from './Landing';
-import { Auth } from './Auth';
+import { Landing } from '../screens/Landing';
+import { Auth } from '../screens/Auth';
 
 export const PublicRouter: React.FC = () => {
     return (
