@@ -4,6 +4,7 @@ import { supabase } from './supabaseClient';
 import { Navbar } from './components/Navbar';
 import { AuthenticatedRouter } from './components/AuthenticatedRouter';
 import { PublicRouter } from './components/PublicRouter';
+import ErrorBoundary from './components/ErrorBoundary';
 
 const App: React.FC = () => {
   const [session, setSession] = useState<any | null>(null);
@@ -20,7 +21,9 @@ const App: React.FC = () => {
     <Router>
       <Navbar loggedIn={!!session}/>
       <main className="container mx-auto">
-        {!session ? <PublicRouter /> : <AuthenticatedRouter session={session} />}
+        <ErrorBoundary>
+          {!session ? <PublicRouter /> : <AuthenticatedRouter session={session} />}
+        </ErrorBoundary>
       </main>
     </Router>
   )
